@@ -1,10 +1,14 @@
 # smarthealthcare
 
 Team no. : 7  
+
 Team Name : Team Horizon  
-Team Members :  Prahar Modi  
-                Abhi Ratnman  
-                Siddharth Pogul  
+
+Team Members : 
+
+Prahar Modi  
+Abhi Ratnman  
+Siddharth Pogul  
 
 We're designing a smart health care system which takes data of different sensors from different locations on the body. 
 We will be developing a system to monitor the exercise one does daily.
