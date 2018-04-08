@@ -28,6 +28,8 @@ def index(request):
 			
 			right.append(tmp.astype(float))
 		elif(message.decode().endswith('c')):
+			if(message.decode().endswith('c\r')):
+				message.decode.splice(-1,2)
 			print("Chest")
 			tmp = np.array(message[:-1].decode().split(','))
 			print(tmp.astype(np.float));
@@ -36,10 +38,10 @@ def index(request):
 			print(message.decode()[:-1])
 		else:
 			print("left")
-			print(message[:-1])
+			print(message.decode()[:-1])
 			tmp = np.array(message[:-1].decode().split(','))
-			print(tmp.astype(np.float));
-			
+			# print(tmp.astype(np.float));
+			print(tmp[2].endswith('c\r'))
 			left.append(tmp.astype(np.float))
 		if(len(left)!=0 and len(chest)!=0 and len(right)!=0):
 			printed = []	
@@ -57,4 +59,7 @@ def index(request):
 			left.pop()
 			right.pop()
 			chest.pop()
-			return JsonResponse({'res':json.dumps({'tm':pd.Series(y_pred).to_json(orient='values')})})
+			predictions = ['standing','Sitting','Lying down','Walking','Walking','Climbing Stairs','Waist bends forward','frontal elevation of arms','Knees bending (crouching)','Cycling','Jogging','Running','Jump front & back ']
+			html = "<h1>You are %s</h1>"%predictions[y_pred[0]];
+			# return JsonResponse({'res':json.dumps({'tm':pd.Series(y_pred).to_json(orient='values')})})
+			return HttpResponse(html);
