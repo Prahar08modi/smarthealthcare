@@ -126,22 +126,25 @@
     while (!client.connect(host, httpPort)) {
       Serial.println("connection failed");
     }
-  
+  String value;
+    value= (String)Ax + "," + (String)Ay + "," + (String)Az+ "," + (String)Gx+ "," + (String)Gy+ "," + (String)Gz + "l";
     Serial.println("Client Printing: Sending Data");
-    client.println("\"");
-    client.println(Ax);
-    client.println(",");
-    client.println(Ay);
-    client.println(",");
-    client.println(Az);
-    client.println(",");
-    client.println(Ax);
-    client.println(",");
-    client.println(Gx);
-    client.println(",");
-    client.println(Gy);
-    client.println(",");
-    client.println(Gz);
+//    client.println("\"");
+    client.print(value);
+    //client.print(",");
+  //  client.print((String)Ay);
+//    client.print(",");
+//    client.print(Az);
+//    client.print(",");
+//    //client.println(Ax);
+//    //client.println(",");
+//    client.print(Gx);
+//    client.print(",");
+//    client.print(Gy);
+//    client.print(",");
+//    client.print(Gz);
+////  client.println(Ax);
+    //client.println("l");
     //delay(500);
     Serial.println("Client Printing: Recieving Data");
     Serial.print("Message From Server: ");
